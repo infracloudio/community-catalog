@@ -1,0 +1,42 @@
+apiVersion: extensions/v1
+kind: Deployment
+metadata:
+  labels:
+    name: reaction-controller
+  name: "reaction-controller"
+  namespace: "default"
+spec:
+  replicas: 1
+  selector:
+    name: reaction-controller
+  template:
+    metadata:
+      labels:
+        name: reaction-controller
+    spec:
+      restartPolicy: Always
+      containers:
+      - image: "reactioncommerce/reaction"
+        imagePullPolicy: Always
+        name: "reaction-controller"
+        ports:
+        - containerPort: ${PORT}
+        env:
+        - name: ROOT_URL
+          value: "http://${HOST_IP}:30850"
+        - name: MONGO_URL
+          value: mongodb://mongo-service:27017/reaction
+        - name: MAIL_URL
+          value: "smtp://${REACTION_EMAIL}:${REACTION_AUTH}@smtp.gmail.com:465"
+        - name: REACTION_USER
+          value: ${REACTION_USER}
+        - name: REACTION_AUTH
+          value: ${REACTION_AUTH}
+        - name: REACTION_EMAIL
+          value: ${REACTION_EMAIL}
+        volumeMounts:
+        - name: mongo-data
+          mountPath: /data/db
+      volumes:
+      - name: mongo-data
+        emptyDir: {}

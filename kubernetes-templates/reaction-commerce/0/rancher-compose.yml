@@ -1,0 +1,30 @@
+.catalog:
+  name: "Reaction-Commerce"
+  version: "1.0.0"
+  description: "Reaction web-server"
+  questions:
+    - variable: "HOST_IP"
+      label: "IP of Host"
+      required: true
+      default: "139.59.2.64"
+      type: "string"
+    - variable: "REACTION_EMAIL"
+      label: "Valid email address"
+      required: true
+      default:
+      type: "string"
+    - variable: "REACTION_AUTH"
+      label: "Password for entered email"
+      required: true
+      default:
+      type: "password"
+    - variable: "REACTION_USER"
+      label: "Username for reaction UI"
+      required: true
+      type: "string"
+      default: admin
+    - variable: "PORT"
+      label: Port on which Reaction should listen
+      default: 80
+      required: true
+      type: int
