@@ -6,7 +6,7 @@ metadata:
 spec:
   ports:
   - name: reactioncommerce
-    nodePort: 30850
+    nodePort: 30820
     port: ${PORT}
     protocol: TCP
     targetPort: ${PORT}

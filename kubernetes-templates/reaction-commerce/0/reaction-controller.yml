@@ -23,7 +23,7 @@ spec:
         - containerPort: ${PORT}
         env:
         - name: ROOT_URL
-          value: "http://${HOST_IP}:30850"
+          value: "http://${HOST_IP}:30820"
         - name: MONGO_URL
           value: mongodb://mongo-service:27017/reaction
         - name: MAIL_URL
