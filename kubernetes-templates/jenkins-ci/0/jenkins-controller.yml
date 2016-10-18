@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: jenkins-controller
+  labels:
+    name: jenkins-controller
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    name: jenkins-controller
+  template:
+    metadata:
+      labels:
+        name: jenkins-controller
+    spec:
+      containers:
+      - name: jenkins-primary
+        image: infracloud/jenkins
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        volumeMounts:
+        - mountPath: /var/jenkins_home/
+          name: jenkins-workspace
+      - name: jenkins-plugins
+        image: rancher/jenkins-plugins:v0.1.1
+        imagePullPolicy: Always
+      volumes:
+      - name: jenkins-workspace
+        emptyDir: {}

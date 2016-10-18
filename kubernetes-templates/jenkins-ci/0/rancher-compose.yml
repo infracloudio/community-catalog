@@ -1,0 +1,4 @@
+.catalog:
+  name: "Jenkins"
+  version: "1.0.0"
+  description: "Jenkins CI management server"
