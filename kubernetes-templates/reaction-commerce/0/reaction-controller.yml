@@ -7,12 +7,10 @@ metadata:
   namespace: "default"
 spec:
   replicas: 1
-  selector:
-    name: reaction-controller
   template:
     metadata:
       labels:
-        name: reaction-controller
+        app: reaction-controller
     spec:
       restartPolicy: Always
       containers:
