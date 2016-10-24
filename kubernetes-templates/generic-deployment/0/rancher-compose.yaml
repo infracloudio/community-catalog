@@ -1,0 +1,77 @@
+.catalog:
+  name: "Generic Catalog"
+  version: "1.0.0"
+  description: "Template for creating catalog"
+  questions:
+    - variable: "REACTION_IMAGE_NAME"
+      label: "Image Name for reaction"
+      required: true
+      default: reactioncommerce/reaction
+      type: "string"
+    - variable: "REACTION_SERVICE_NAME"
+      label: "Name for reaction service"
+      required: true
+      default:
+      type: "string"
+    - variable: "REACTION_CONTROLLER_NAME"
+      label: "Name for reaction controller"
+      required: true
+      default:
+      type: "string"
+    - variable: "REACTION_REPLICAS"
+      label: "Number of replicas needed for reaction"
+      required: true
+      default: 1
+      type: int
+
+    - variable: "MONGO_IMAGE_NAME"
+      label: "Image Name for mongo"
+      required: true
+      default: mongo
+      type: "string"
+    - variable: "MONGO_SERVICE_NAME"
+      label: "Name for mongo service"
+      required: true
+      default:
+      type: "string"
+    - variable: "MONGO_CONTROLLER_NAME"
+      label: "Name for mongo controller"
+      required: true
+      default:
+      type: "string"
+    - variable: "MONGO_REPLICAS"
+      label: "Number of replicas needed for mongo"
+      required: true
+      default: 1
+      type: int
+
+    - variable: "HOST_IP"
+      label: "IP of Host"
+      required: true
+      default: "54.183.189.68"
+      type: "string"
+    - variable: "REACTION_EMAIL"
+      label: "Valid email address"
+      required: true
+      default:
+      type: "string"
+    - variable: "REACTION_AUTH"
+      label: "Password for entered email"
+      required: true
+      default:
+      type: "password"
+    - variable: "REACTION_USER"
+      label: "Username for reaction UI"
+      required: true
+      type: "string"
+      default: admin
+    - variable: "PORT"
+      label: Port on which Reaction should listen
+      default: 80
+      required: true
+      type: int
+    - variable: "NODE_PORT"
+      label: Node port value on which reaction should be expose (in range 30000-32767)
+      default: 30820
+      required: true
+      type: int

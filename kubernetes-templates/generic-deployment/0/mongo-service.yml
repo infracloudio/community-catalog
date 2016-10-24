@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ${MONGO_SERVICE_NAME}
+  namespace: default
+spec:
+  ports:
+  - port: 27017
+    protocol: TCP
+    targetPort: 27017
+  selector:
+    name: ${MONGO_CONTROLLER_NAME}

@@ -1,0 +1,40 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    name: ${REACTION_CONTROLLER_NAME}
+  name: ${REACTION_CONTROLLER_NAME}
+  namespace: "default"
+spec:
+  replicas: ${REACTION_REPLICAS}
+  template:
+    metadata:
+      labels:
+        app: ${REACTION_CONTROLLER_NAME}
+    spec:
+      restartPolicy: Always
+      containers:
+      - image: ${REACTION_IMAGE_NAME}
+        imagePullPolicy: Always
+        name: ${REACTION_CONTROLLER_NAME}
+        ports:
+        - containerPort: ${PORT}
+        env:
+        - name: ROOT_URL
+          value: "http://${HOST_IP}:${NODE_PORT}"
+        - name: MONGO_URL
+          value: mongodb://${MONGO_SERVICE_NAME}:27017/reaction
+        - name: MAIL_URL
+          value: "smtp://${REACTION_EMAIL}:${REACTION_AUTH}@smtp.gmail.com:465"
+        - name: REACTION_USER
+          value: ${REACTION_USER}
+        - name: REACTION_AUTH
+          value: ${REACTION_AUTH}
+        - name: REACTION_EMAIL
+          value: ${REACTION_EMAIL}
+        volumeMounts:
+        - name: mongo-data
+          mountPath: /data/db
+      volumes:
+      - name: mongo-data
+        emptyDir: {}
