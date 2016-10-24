@@ -1,7 +1,7 @@
 .catalog:
-  name: "Generic Catalog"
+  name: "Generic Deployment"
   version: "1.0.0"
-  description: "Template for creating catalog"
+  description: "Generic catalog for Deployment"
   questions:
     - variable: "REACTION_IMAGE_NAME"
       label: "Image Name for reaction"
