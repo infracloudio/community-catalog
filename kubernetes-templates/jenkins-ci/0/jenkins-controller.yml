@@ -41,10 +41,10 @@ spec:
       volumes:
       - name: jenkins-workspace
         emptyDir: {}
-      - name: libsystemd-journal
+      - name: libsystem-journal
         hostPath:
           path: /lib64/libsystemd-journal.so.0
-      - name: libsystemd-id
+      - name: libsystem-id
         hostPath:
           path: /lib64/libsystemd-id128.so.0
       - name: libdevmapper
