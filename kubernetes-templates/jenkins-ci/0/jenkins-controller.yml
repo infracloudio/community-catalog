@@ -21,11 +21,44 @@ spec:
         ports:
         - containerPort: 8080
           protocol: TCP
-        args:
-        - -v /var/run/docker.sock:/var/run/docker.sock -v $$(which docker):/usr/bin/docker
         volumeMounts:
         - mountPath: /var/jenkins_home/
           name: jenkins-workspace
+        - mountPath: /usr/lib/libsystemd-journal.so.0
+          name: libsystem-journal
+        - mountPath: /usr/lib/libsystemd-id128.so.0
+          name: libsystem-id
+        - mountPath: /usr/lib/libdevmapper.so.1.02
+          name: libdevmapper
+        - mountPath: /usr/lib/libgcrypt.so.11
+          name: libgcrypt
+        - mountPath: /usr/lib/libdw.so.1
+          name: libdw
+        - mountPath: /var/run/docker.sock
+          name: docker-sock
+        - mountPath: /usr/bin/docker
+          name: docker-dir
       volumes:
       - name: jenkins-workspace
         emptyDir: {}
+      - name: libsystemd-journal
+        hostPath:
+          path: /lib64/libsystemd-journal.so.0
+      - name: libsystemd-id
+        hostPath:
+          path: /lib64/libsystemd-id128.so.0
+      - name: libdevmapper
+        hostPath:
+          path: /lib64/libdevmapper.so.1.02
+      - name: libgcrypt
+        hostPath:
+          path: /lib64/libgcrypt.so.11
+      - name: libdw
+        hostPath:
+          path: /lib64/libdw.so.1
+      - name: docker-sock
+        hostPath:
+          path: /var/run/docker.sock
+      - name: docker-dir
+        hostPath:
+          path: /usr/bin/docker
