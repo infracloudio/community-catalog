@@ -17,7 +17,7 @@ spec:
       restartPolicy: Always
       containers:
       - name: mongo
-        image: mongo
+        image: quay.io/infracloud/mongo
         command:
         - mongod
         - --storageEngine=wiredTiger

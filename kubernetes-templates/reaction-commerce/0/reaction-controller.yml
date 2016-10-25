@@ -14,7 +14,7 @@ spec:
     spec:
       restartPolicy: Always
       containers:
-      - image: "reactioncommerce/reaction"
+      - image: quay.io/infracloud/reaction
         imagePullPolicy: Always
         name: "reaction-controller"
         ports:

@@ -6,7 +6,7 @@
     - variable: "REACTION_IMAGE_NAME"
       label: "Image Name for reaction"
       required: true
-      default: reactioncommerce/reaction
+      default: quay.io/infracloud/reaction
       type: "string"
     - variable: "REACTION_SERVICE_NAME"
       label: "Name for reaction service"
@@ -27,7 +27,7 @@
     - variable: "MONGO_IMAGE_NAME"
       label: "Image Name for mongo"
       required: true
-      default: mongo
+      default: quay.io/infracloud/mongo
       type: "string"
     - variable: "MONGO_SERVICE_NAME"
       label: "Name for mongo service"
