@@ -14,34 +14,42 @@ spec:
 apiVersion: v1
 kind: ReplicationController
 metadata:
+  labels:
+    name: mongo-master
   name: mongo-master
+  namespace: default
 spec:
   replicas: 1
   selector:
     name: mongo-master
   template:
+    metadata:
+      labels:
+        name: mongo-master
     spec:
       containers:
-      - name: mongo-master
+      - command:
+        - /run.sh
+        - mongod
+        - --replSet
+        - rs0
+        - --smallfiles
+        - --noprealloc
+        env:
+        - name: PRIMARY
+          value: "true"
         image: husseingalal/mongo-k8s
+        imagePullPolicy: Always
+        name: mongo-master
         ports:
         - containerPort: 27017
-        env:
-          - name: PRIMARY
-            value: true
+          protocol: TCP
         volumeMounts:
-        - name: mongo-ebs-primary
-          mountPath: "/data/db"
-          command:
-            - /run.sh
-            - mongod
-            - "--replSet"
-            - rs0
-            - "--smallfiles"
-            - "--noprealloc"
-    volumes:
-        - name: mongo-ebs-primary
-          awsElasticBlockStore:
-      	    # Enter the volume ID below
-      	    volumeID: vol-72e9e4dc
-            fsType: ext4
+        - mountPath: /data/db
+          name: mongo-ebs-primary
+      restartPolicy: Always
+      volumes:
+      - awsElasticBlockStore:
+          fsType: ext4
+          volumeID: vol-72e9e4dc
+        name: mongo-ebs-primary
