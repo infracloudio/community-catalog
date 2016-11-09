@@ -1,0 +1,40 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: mongo-rc
+spec:
+  replicas: 1
+  selector:
+    name: mongo-sec
+  template:
+    metadata:
+      labels:
+        name: mongo-sec
+        mongo_db: mongo-db  
+    spec:
+      containers:
+      - command:
+        - /run.sh
+        - mongod
+        - --replSet
+        - rs0
+        - --smallfiles
+        - --noprealloc
+        env:
+        - name: PRIMARY
+          value: "true"
+        image: husseingalal/mongo-k8s
+        imagePullPolicy: Always
+        name: mongo-sec
+        ports:
+        - containerPort: 27017
+          protocol: TCP
+        volumeMounts:
+        - mountPath: /data/db
+          name: mongo-ebs-secondary-2
+      restartPolicy: Always
+      volumes:
+      - awsElasticBlockStore:
+          fsType: ext4
+          volumeID: ${MONGO_SECONDARY_VOLUME_2}
+        name: mongo-ebs-secondary-2

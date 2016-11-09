@@ -1,0 +1,50 @@
+.catalog:
+  name: "Reaction-Commerce"
+  version: "1.0.0"
+  description: "Reaction eCommerce application"
+  questions:
+    - variable: "REACTION_ROOT_URL"
+      label: "IP of Host"
+      required: true
+      default: ""
+      type: "string"
+    - variable: "REACTION_EMAIL"
+      label: "Valid email address"
+      required: true
+      default: ""
+      type: "string"
+    - variable: "REACTION_AUTH"
+      label: "Password for entered email"
+      required: true
+      default: ""
+      type: "password"
+    - variable: "REACTION_USER"
+      label: "Username for reaction UI"
+      required: true
+      type: "string"
+      default: admin
+    - variable: "PORT"
+      label: Port on which Reaction should listen
+      default: 80
+      required: true
+      type: int
+    - variable: "SMTP_ADDRESS"
+      label: The fully qualified SMTP address which can be used to send email
+      default: 
+      required: true
+      type: "string"
+    - variable: "MONGO_PRIMARY_VOLUME_ID"
+      label: The EBS volume to be used by Mongo Primary node
+      default:
+      required: true
+      type: "string"
+    - variable: "MONGO_SECONDARY_VOLUME_1"
+      label: The EBS volume to be used by Mongo Secondary node 1
+      default:
+      required: true
+      type: "string"
+    - variable: "MONGO_SECONDARY_VOLUME_2"
+      label: The EBS volume to be used by Mongo Secondary node 2
+      default:
+      required: true
+      type: "string"  
