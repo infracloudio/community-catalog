@@ -1,6 +1,6 @@
 .catalog:
   name: "Reaction-Commerce"
-  version: "1.0.0"
+  version: "2.0.0"
   description: "Reaction eCommerce application"
   questions:
     - variable: "MONGO_PRIMARY_VOLUME_ID"
