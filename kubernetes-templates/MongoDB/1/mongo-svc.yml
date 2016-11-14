@@ -9,4 +9,4 @@ spec:
     - port: 27017
       targetPort: 27017
   selector:
-    mongo_db: mongo-db
+    name: mongo-master

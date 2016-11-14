@@ -1,8 +1,6 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  labels:
-    name: mongo-master
   name: mongo-master
   namespace: default
 spec:
@@ -15,9 +13,6 @@ spec:
         name: mongo-master
     spec:
       containers:
-        env:
-        - name: PRIMARY
-          value: "true"
         image: mongo
         imagePullPolicy: Always
         name: mongo-master
