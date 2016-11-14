@@ -1,0 +1,10 @@
+.catalog:
+  name: "Reaction-Commerce"
+  version: "1.0.0"
+  description: "Reaction eCommerce application"
+  questions:
+    - variable: "MONGO_PRIMARY_VOLUME_ID"
+      label: The EBS volume to be used by Mongo Primary node
+      default:
+      required: true
+      type: "string"
