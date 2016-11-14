@@ -1,0 +1,36 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    name: mongo-master
+  name: mongo-master
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    name: mongo-master
+  template:
+    metadata:
+      labels:
+        name: mongo-master
+        mongo_db: mongo-db
+    spec:
+      containers:
+        env:
+        - name: PRIMARY
+          value: "true"
+        image: mongo
+        imagePullPolicy: Always
+        name: mongo-master
+        ports:
+        - containerPort: 27017
+          protocol: TCP
+        volumeMounts:
+        - mountPath: /data/db
+          name: mongo-ebs-primary
+      restartPolicy: Always
+      volumes:
+      - awsElasticBlockStore:
+          fsType: ext4
+          volumeID: ${MONGO_PRIMARY_VOLUME_ID}
+        name: mongo-ebs-primary
