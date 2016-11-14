@@ -13,7 +13,6 @@ spec:
     metadata:
       labels:
         name: mongo-master
-        mongo_db: mongo-db
     spec:
       containers:
         env:
