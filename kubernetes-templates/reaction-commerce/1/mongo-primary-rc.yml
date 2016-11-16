@@ -2,17 +2,15 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   labels:
-    name: mongo-master
-  name: mongo-master
+    name: mongomaster
+  name: mongomaster
   namespace: default
 spec:
   replicas: 1
-  selector:
-    name: mongo-master
   template:
     metadata:
       labels:
-        name: mongo-master
+        name: mongomaster
         mongo_db: mongo-db
     spec:
       containers:
@@ -28,7 +26,7 @@ spec:
           value: "true"
         image: husseingalal/mongo-k8s
         imagePullPolicy: Always
-        name: mongo-master
+        name: mongomaster
         ports:
         - containerPort: 27017
           protocol: TCP

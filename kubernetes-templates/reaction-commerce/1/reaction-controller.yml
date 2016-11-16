@@ -14,14 +14,12 @@ spec:
     spec:
       restartPolicy: Always
       containers:
-      - image: quay.io/infracloud/reaction
+      - image: reactioncommerce/reaction
         imagePullPolicy: Always
         name: "reaction-controller"
         ports:
         - containerPort: ${PORT}
         env:
-        - name: ROOT_URL
-          value: "http://${REACTION_ROOT_URL}:9000"
         - name: MONGO_URL
           value: mongodb://mongo-service:27017/reaction
         - name: MAIL_URL

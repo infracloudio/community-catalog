@@ -4,8 +4,6 @@ metadata:
   name: mongo-rc
 spec:
   replicas: 1
-  selector:
-    name: mongo-sec
   template:
     metadata:
       labels:
